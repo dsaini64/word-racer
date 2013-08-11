@@ -13,6 +13,7 @@
 
 #import "GameLayer.h"
 #import "GameOverLayer.h"
+#import "HintLayer.h"
 #import "Entity.h"
 #import "GenericMenuLayer.h"
 #import "cocos2d.h"
@@ -85,15 +86,16 @@ CCLabelTTF* verifyTouchEnd;
         CCMenuItemLabel *item = [CCMenuItemLabel itemWithLabel:skipLabel target:self selector:@selector(skipWord)];
         item.position = ccp(125,100);
         CCMenu *menu = [CCMenu menuWithItems:item, nil];
+        [self addChild:menu]; 
         
         //Add question button
         CCLabelTTF *questionLabel = [CCLabelTTF labelWithString: @"?" fontName:@"Arial" fontSize:20.0f];
         CCMenuItemLabel *item2 = [CCMenuItemLabel itemWithLabel:questionLabel target:self selector:@selector(showHints)];
-        item.position = ccp(100,100);
+        item2.position = ccp(50,100);
         CCMenu *menu2 = [CCMenu menuWithItems:item2, nil];
         
         
-        [self addChild:menu];
+        [self addChild:menu2];
         [self updateLetterAndPOS];
         self.score = 0;
         
@@ -321,7 +323,7 @@ CCLabelTTF* verifyTouchEnd;
 - (void)viewDidLoad
 {
     currMinute=0;
-    currSeconds=10;
+    currSeconds=20;
 
     self.timeLabel = [CCLabelTTF labelWithString:[NSString stringWithFormat:@"%d:%02d", currMinute, currSeconds] dimensions: CGSizeMake(200,200) alignment:kCCTextAlignmentLeft fontName:@"arial" fontSize:15];
      self.timeLabel.position = ccp(100, 375);
@@ -403,16 +405,20 @@ CCLabelTTF* verifyTouchEnd;
     sampleArray = [NSMutableArray arrayWithObjects:POS,startingLetter,userInput,nil];
     
     
-    [mutableDict setObject: sampleArray forKey:@"Key1"];
+    [mutableDict setObject: sampleArray[0] forKey:@"POS"];
+    [mutableDict setObject: sampleArray[1] forKey: @"startingLetter"];
+    [mutableDict setObject: sampleArray[2] forKey:@"userInput"];
     
     [self.arrayOfWords addObject:mutableDict];
     
-    
-    NSLog(@"%@",self.arrayOfWords);
     WordData* data = [WordData sharedData];
     data.arrayOfDataToBeStored = self.arrayOfWords;
 }
 -(void) showHints {
+    
+    [self.textBox removeFromSuperview];
+    [[CCDirector sharedDirector] replaceScene: [HintLayer alloc]];
+   
              
 }
 
