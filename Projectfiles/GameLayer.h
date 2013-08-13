@@ -57,6 +57,7 @@ typedef enum
 @property (nonatomic, assign) NSInteger *highScore;
 @property (nonatomic, strong) NSString *userInput; 
 @property (nonatomic, strong) NSMutableArray *arrayOfWords;
+@property (nonatomic, strong) NSString *wordValid; 
 
 +(CGRect) screenRect;
 -(void) displayLetterAndPOS;

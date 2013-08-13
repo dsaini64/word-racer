@@ -15,6 +15,10 @@
 @property (nonatomic) CGFloat *xvalue;
 @property (nonatomic) CGFloat *yvalue;
 @property (nonatomic) NSNumber *timesDownPressed;
+@property (nonatomic) NSNumber *timesUpPressed; 
+@property (strong, nonatomic) CCLabelTTF *upLabel;
+@property (strong, nonatomic) CCLabelTTF *downLabel;
+@property (strong, nonatomic) CCLabelTTF *userInputLabel; 
 -(id) initWithScore:(NSInteger)score; 
 
 @end

@@ -58,20 +58,13 @@
         CCLabelTTF *highScoreLabel = [CCLabelTTF labelWithString:[NSString stringWithFormat:@"Overall High Score: \n %d", highScore] fontName:@"arial" fontSize:15];
         highScoreLabel.position = CGPointMake(160,340);
 
-         [self addChild:highScoreLabel];
+        [self addChild:highScoreLabel];
         
-        //add down button
-        
-        CCLabelTTF *downLabel = [CCLabelTTF labelWithString: @"down" fontName:@"Arial" fontSize:10.0f];
-        
-        CCMenuItemLabel *item3 = [CCMenuItemLabel itemWithLabel:downLabel target:self selector:@selector(moveScreenDown)];
-        item3.position = ccp(100,-220);
-        
-        
+
         
         //show the buttons
         
-        CCMenu *menu = [CCMenu menuWithItems:item, item2,item3, nil];
+        CCMenu *menu = [CCMenu menuWithItems:item, item2, nil];
         [self addChild:menu];
 
 
@@ -79,6 +72,11 @@
         
         NSArray *wordArray = [WordData sharedData].arrayOfDataToBeStored;
         NSLog(@"%@",wordArray);
+        
+        if (wordArray.count > 8) {
+            [self showDownBtn];
+        }
+        
         float y = 0;
        for(int i = 0; i < [wordArray count]; i++) {
            
@@ -91,9 +89,16 @@
             startingLetterLabel.position = ccp (110 ,(100 - y));
             [self addChild:startingLetterLabel];
             
-        CCLabelTTF *userInputLabel = [CCLabelTTF labelWithString:[NSString stringWithFormat:@"%@",[wordDict objectForKey:@"userInput"]] dimensions: CGSizeMake(200,200) alignment:kCCTextAlignmentLeft fontName:@"arial" fontSize:20];
-            userInputLabel.position = ccp (260, (100 - y));
-            [self addChild:userInputLabel];
+       self.userInputLabel = [CCLabelTTF labelWithString:[NSString stringWithFormat:@"%@",[wordDict objectForKey:@"userInput"]] dimensions: CGSizeMake(200,200) alignment:kCCTextAlignmentLeft fontName:@"arial" fontSize:20];
+           if ([[wordDict objectForKey:@"wordValidity"] isEqual: @"YES"]) {
+               [self.userInputLabel setColor:ccc3(0, 255, 0)];
+            }
+           else {
+               [self.userInputLabel setColor:ccc3(255, 0, 0)];
+           }
+            self.userInputLabel.position = ccp (260, (100 - y));
+            [self addChild:self.userInputLabel];
+           NSLog(@"UserInputLabel position: %f",self.userInputLabel.position.y);
            
            y += 25;
            
@@ -101,6 +106,10 @@
         
         }
     }
+
+
+
+        
   
     
         
@@ -112,14 +121,14 @@
 //
 //        }
        
-        
+        NSLog(@"Hello World: %f",self.userInputLabel.position.y);
         NSLog(@"Layer size: %f", self.size.height);
         //NSLog(@"menu size: %f", menuLabel.size.height);
 
     return self;
+
+
 }
-
-
     
     
 -(void) menuLayerTransition
@@ -133,11 +142,17 @@
 }
 
 -(void) moveScreenDown {
+    
+    
+    
     self.timesDownPressed = [NSNumber numberWithInt:[self.timesDownPressed intValue] + 1];
     CGSize winsize = [CCDirector sharedDirector].winSize;
     self.position = CGPointMake(self.position.x, self.position.y + winsize.height);
-    [self showDownBtn];
-    [self showUpBtn]; 
+    NSLog(@"%f",self.position.y);
+    
+    [self showUpBtn];
+    [self showDownBtn]; 
+    
     
     
 
@@ -147,14 +162,17 @@
 -(void) moveScreenUp {
     CGSize winsize = [CCDirector sharedDirector].winSize;
     self.position = CGPointMake(self.position.x, self.position.y - winsize.height);
+
     
 }
 
 -(void) showUpBtn {
-    CCLabelTTF *upLabel = [CCLabelTTF labelWithString: @"up" fontName:@"Arial" fontSize:10.0f];
+    //[self.upLabel removeFromParent];
     
-    CCMenuItemLabel *item3 = [CCMenuItemLabel itemWithLabel:upLabel target:self selector:@selector(moveScreenUp)];
-    item3.position = ccp(100,-700);
+    self.upLabel = [CCLabelTTF labelWithString: @"up" fontName:@"Arial" fontSize:10.0f];
+    
+    CCMenuItemLabel *item3 = [CCMenuItemLabel itemWithLabel:self.upLabel target:self selector:@selector(moveScreenUp)];
+    item3.position = ccp(100,-10 -([self.timesDownPressed intValue] * 480));
     CCMenu *menu = [CCMenu menuWithItems:item3, nil];
     [self addChild:menu];
 
@@ -164,20 +182,32 @@
 }
 
 -(void)showDownBtn{
- 
-    CCLabelTTF *downLabel = [CCLabelTTF labelWithString: @"down" fontName:@"arial" fontSize:10.0f];
-    CCMenuItemLabel *item = [CCMenuItemLabel itemWithLabel:downLabel target:self selector:@selector(moveScreenDown)];
-    float yValue = (480*[self.timesDownPressed intValue]);
-    item.position = ccp(50,yValue);
+    
+    //[self.downLabel removeFromParent];
+    
+    
+    if([self.timesDownPressed intValue] == 0) {
+        self.downLabel = [CCLabelTTF labelWithString: @"down" fontName:@"arial" fontSize:10.0f];
+        CCMenuItemLabel *item = [CCMenuItemLabel itemWithLabel:self.downLabel target:self selector:@selector(moveScreenDown)];
+        item.position = ccp(100,-20-(480*[self.timesDownPressed intValue]));
+        CCMenu *menu = [CCMenu menuWithItems:item, nil];
+        [self addChild:menu];
+    }
+    
+        
+
+    self.downLabel = [CCLabelTTF labelWithString: @"down" fontName:@"arial" fontSize:10.0f];
+    CCMenuItemLabel *item = [CCMenuItemLabel itemWithLabel:self.downLabel target:self selector:@selector(moveScreenDown)];
+    //float yValue = (400*[self.timesDownPressed intValue]);
+    item.position = ccp(100,-20-(480*[self.timesDownPressed intValue]));
     CCMenu *menu = [CCMenu menuWithItems:item, nil];
     [self addChild:menu];
+    
 }
 
-
-
-
-
-
-
+//else {
+       // [self.downLabel removeFromParent];
+    //}
+//}
 
 @end

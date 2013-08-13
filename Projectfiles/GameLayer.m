@@ -1,3 +1,4 @@
+
 /*
  * Kobold2D™ --- http://www.kobold2d.org
  *
@@ -75,7 +76,7 @@ CCLabelTTF* verifyTouchEnd;
         self.textBox = [[UITextField alloc] initWithFrame:CGRectMake(100, 100, 220, 20)];
         [self.textBox setTextColor: [UIColor colorWithRed:255 green:0 blue:0 alpha:1.0]];
         [self.textBox setBackgroundColor:[UIColor colorWithRed:255 green:100 blue:43 alpha:1.0]];
-        self.textBox.autocorrectionType = UITextAutocorrectionTypeNo;
+        //self.textBox.autocorrectionType = UITextAutocorrectionTypeNo;
         self.textBox.autocapitalizationType = UITextAutocapitalizationTypeNone;
         [myView addSubview:self.textBox];
         [self.textBox becomeFirstResponder];
@@ -141,9 +142,21 @@ CCLabelTTF* verifyTouchEnd;
         
         //This will schedule a call to the update method every frame
         [self scheduleUpdate];
-        
-        
+//       NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+//        BOOL returningPlayer = [defaults integerForKey:@"returningPlayer"];
+//        returningPlayer = nil; 
+//        if(returningPlayer == nil){
+//            
+//            self.startTextLabel = [CCLabelTTF labelWithString:@"Welcome to my game!!" dimensions: CGSizeMake(200,200) alignment:kCCTextAlignmentLeft fontName:@"arial" fontSize:100];
+//            
+//            self.startTextLabel.position = ccp(110, 350);
+//            [self addChild: self.startTextLabel];
+//            
+//        }
     }
+    
+        
+    
 	return self;
 }
 
@@ -216,7 +229,8 @@ CCLabelTTF* verifyTouchEnd;
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
     if ([self checkWord:textField]) {
         self.score ++;
-        [self storePOS:self.partOfSpeech andStartingLetter:self.startText andUserInput:self.completeInput];
+        self.wordValid = @"YES";
+        [self storePOS:self.partOfSpeech andStartingLetter:self.startText andUserInput:self.completeInput andValidity:self.wordValid];
         [self updateLetterAndPOS];
         [self displayLetterAndPOS];
         [self drawScore];
@@ -225,7 +239,8 @@ CCLabelTTF* verifyTouchEnd;
        
     // Maybe give user feedback like "Good job!"
     } else {
-         [self storePOS:self.partOfSpeech andStartingLetter:self.startText andUserInput:self.completeInput];
+        self.wordValid = @"NO";
+        [self storePOS:self.partOfSpeech andStartingLetter:self.startText andUserInput:self.completeInput andValidity:self.wordValid];
         [self updateLetterAndPOS];
         [self displayLetterAndPOS];
         [self drawScore];
@@ -390,7 +405,7 @@ CCLabelTTF* verifyTouchEnd;
     
 }
 
--(void) storePOS:(NSString *)POS andStartingLetter:(NSString *)startingLetter andUserInput:(NSString *)userInput {
+-(void) storePOS:(NSString *)POS andStartingLetter:(NSString *)startingLetter andUserInput:(NSString *)userInput andValidity:(NSString *)wordValid {
     
     if (userInput.length == 1)
     {
@@ -402,12 +417,13 @@ CCLabelTTF* verifyTouchEnd;
     
     
     NSMutableArray *sampleArray = [[NSMutableArray alloc]init];
-    sampleArray = [NSMutableArray arrayWithObjects:POS,startingLetter,userInput,nil];
+    sampleArray = [NSMutableArray arrayWithObjects:POS,startingLetter,userInput, wordValid ,nil];
     
     
-    [mutableDict setObject: sampleArray[0] forKey:@"POS"];
+    [mutableDict setObject: sampleArray[0] forKey: @"POS"];
     [mutableDict setObject: sampleArray[1] forKey: @"startingLetter"];
-    [mutableDict setObject: sampleArray[2] forKey:@"userInput"];
+    [mutableDict setObject: sampleArray[2] forKey: @"userInput"];
+    [mutableDict setObject: sampleArray[3] forKey: @"wordValidity"]; 
     
     [self.arrayOfWords addObject:mutableDict];
     

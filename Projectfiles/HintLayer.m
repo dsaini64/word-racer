@@ -10,5 +10,13 @@
 #import "GameLayer.h"
 
 @implementation HintLayer
+-(id) init
+{
+	if ((self = [super init]))
+	{
+        
+    }
+}
 
 @end
+

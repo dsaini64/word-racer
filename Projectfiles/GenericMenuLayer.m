@@ -27,6 +27,8 @@
         CCMenu *menu = [CCMenu menuWithItems:item, nil];
         
         [self addChild:menu];
+        }
+        
          
         
         //Add button
@@ -41,7 +43,7 @@
          */
         
       
-    }
+    
     return self;
         
     
