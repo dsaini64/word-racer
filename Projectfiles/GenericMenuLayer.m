@@ -22,6 +22,8 @@
         
         NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
         BOOL returningPlayer = [defaults integerForKey:@"returningPlayer"];
+       // returningPlayer = nil;
+        
      
         if (!returningPlayer) {
             
@@ -35,6 +37,8 @@
             CCMenu *menu = [CCMenu menuWithItems:item, nil];
             
             [self addChild:menu];
+            
+           // [defaults setBool:YES forKey:@"returningPlayer"];
             
             
         }

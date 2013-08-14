@@ -24,6 +24,7 @@
 @property (strong, nonatomic) CCLabelTTF *timerInfoLabel;
 @property (strong, nonatomic) CCLabelTTF *qMarkLabel;
 @property (strong, nonatomic) CCLabelTTF *startGameLabel;
+@property (strong, nonatomic) NSTimer *myTimer;
 -(id) init; 
 
 @end

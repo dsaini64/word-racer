@@ -9,6 +9,7 @@
 #import "Tutorial.h"
 #import "GenericMenuLayer.h"
 #import "Lexicontext.h" 
+#import "GameLayer.h"
 
 @implementation Tutorial
 
@@ -50,7 +51,9 @@
 -(void) drawStartingLetterAndPOS {
     
     [self.startTextLabel removeFromParent];
-    [self.POSLabel removeFromParent]; 
+    [self.POSLabel removeFromParent];
+    [self startTimer];
+    
     self.startTextLabel = [CCLabelTTF labelWithString: [NSString stringWithFormat:@"%@",self.startText] dimensions: CGSizeMake(200,200) alignment:kCCTextAlignmentLeft fontName:@"arial" fontSize:100];
     
     self.startTextLabel.position = ccp(110, 350);
@@ -60,6 +63,7 @@
     
     self.POSLabel.position = ccp(205, 320);
     [self addChild: self.POSLabel];
+    
 
 }
 
@@ -216,7 +220,7 @@
         
         [self.timerInfoLabel removeFromParent];
           self.qMarkLabel = [CCLabelTTF labelWithString:@"?" dimensions: CGSizeMake(200,200) alignment:kCCTextAlignmentLeft fontName:@"arial" fontSize:15];
-        self.qMarkLabel.position = ccp(200,200);
+        self.qMarkLabel.position = ccp(300,275);
         [self addChild:self.qMarkLabel];
         self.timerInfoLabel = [CCLabelTTF labelWithString:[NSString stringWithFormat:@"Need help recalling the part of speeches? You'll want to tap this button!"] dimensions: CGSizeMake(200,200) alignment:kCCTextAlignmentLeft fontName:@"arial" fontSize:15];
         self.timerInfoLabel.position = ccp(200, 180);
@@ -234,16 +238,19 @@
 
 -(void) startGame {
     
-    self.startGameLabel = [CCLabelTTF labelWithString:@"Start Game" dimensions: CGSizeMake(200,200) alignment:kCCTextAlignmentLeft fontName:@"arial" fontSize:15];
-    self.startGameLabel.position = ccp(200,200);
-    [self addChild:self.startGameLabel];
+    CCLabelTTF *label = [CCLabelTTF labelWithString: @"Start Game!" fontName:@"Arial" fontSize:40.0f];
     
+    
+    
+    CCMenuItemLabel *item = [CCMenuItemLabel itemWithLabel:label target:self selector:@selector(doSomething)];
+    
+    
+    CCMenu *menu = [CCMenu menuWithItems:item, nil];
+    
+    [self addChild:menu];
     
 }
 
-    
-
-    
 
 - (void) drawIncorrect {
     [self.goodJobLabel removeFromParent];
@@ -260,6 +267,24 @@
       nil
       ]
      ];
+    
+}
+
+-(void) startTimer {
+
+
+    self.timer=[NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(doNothing) userInfo:nil repeats:YES];
+}
+
+-(void) doNothing {
+    
+    
+}
+-(void) doSomething {
+    
+    
+    [self.textBox removeFromSuperview]; 
+    [[CCDirector sharedDirector] replaceScene: [[GameLayer alloc] init]];
     
 }
 

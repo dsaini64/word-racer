@@ -167,7 +167,7 @@
 }
 
 -(void) showUpBtn {
-    //[self.upLabel removeFromParent];
+   // [self.upLabel removeFromParent];
     
     self.upLabel = [CCLabelTTF labelWithString: @"up" fontName:@"Arial" fontSize:10.0f];
     
@@ -183,7 +183,7 @@
 
 -(void)showDownBtn{
     
-    //[self.downLabel removeFromParent];
+   // [self.downLabel removeFromParent];
     
     
     if([self.timesDownPressed intValue] == 0) {
