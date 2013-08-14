@@ -18,7 +18,8 @@
 @property (nonatomic) NSNumber *timesUpPressed; 
 @property (strong, nonatomic) CCLabelTTF *upLabel;
 @property (strong, nonatomic) CCLabelTTF *downLabel;
-@property (strong, nonatomic) CCLabelTTF *userInputLabel; 
+@property (strong, nonatomic) CCLabelTTF *userInputLabel;
+@property (nonatomic) NSUInteger *wordCount;
 -(id) initWithScore:(NSInteger)score; 
 
 @end

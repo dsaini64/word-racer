@@ -12,6 +12,7 @@
 		5ACE8CC117B0676200335B2B /* LexicontextAssets.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 5ACE8CBF17B0676200335B2B /* LexicontextAssets.bundle */; };
 		5ACE8CC217B0676200335B2B /* libLexicontext.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5ACE8CC017B0676200335B2B /* libLexicontext.a */; };
 		5AE9AF3817B05BFF00EA1473 /* WordData.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AE9AF3717B05BFF00EA1473 /* WordData.m */; };
+		5AED2F3C17BAC57C005DF4DF /* Tutorial.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AED2F3B17BAC57C005DF4DF /* Tutorial.m */; };
 		5AF1E48617B4560500438A81 /* HintLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AF1E48517B4560500438A81 /* HintLayer.m */; };
 		AA6049AE15AE4B7C0043DFF9 /* GenericMenuLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = AA6049AD15AE4B7B0043DFF9 /* GenericMenuLayer.m */; };
 		AA6049B015AE500B0043DFF9 /* ship.png in Resources */ = {isa = PBXBuildFile; fileRef = AA6049AF15AE500B0043DFF9 /* ship.png */; };
@@ -52,6 +53,8 @@
 		5AE9AF3617B05BFF00EA1473 /* WordData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WordData.h; sourceTree = "<group>"; };
 		5AE9AF3717B05BFF00EA1473 /* WordData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WordData.m; sourceTree = "<group>"; };
 		5AE9AF3917B0631F00EA1473 /* Lexicontext.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Lexicontext.h; sourceTree = "<group>"; };
+		5AED2F3A17BAC57C005DF4DF /* Tutorial.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Tutorial.h; sourceTree = "<group>"; };
+		5AED2F3B17BAC57C005DF4DF /* Tutorial.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Tutorial.m; sourceTree = "<group>"; };
 		5AF1E48417B4560500438A81 /* HintLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HintLayer.h; sourceTree = "<group>"; };
 		5AF1E48517B4560500438A81 /* HintLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HintLayer.m; sourceTree = "<group>"; };
 		AA6049AC15AE4B7B0043DFF9 /* GenericMenuLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GenericMenuLayer.h; sourceTree = "<group>"; };
@@ -134,6 +137,8 @@
 				5AE9AF3917B0631F00EA1473 /* Lexicontext.h */,
 				AA6049AC15AE4B7B0043DFF9 /* GenericMenuLayer.h */,
 				AA6049AD15AE4B7B0043DFF9 /* GenericMenuLayer.m */,
+				5AED2F3A17BAC57C005DF4DF /* Tutorial.h */,
+				5AED2F3B17BAC57C005DF4DF /* Tutorial.m */,
 				DC6459E0140550FE00DEDC42 /* GameLayer.h */,
 				DC6459E1140550FE00DEDC42 /* GameLayer.m */,
 				5A046BF317A3603200074835 /* GameOverLayer.h */,
@@ -330,6 +335,7 @@
 				5A046BF517A3603200074835 /* GameOverLayer.m in Sources */,
 				5AE9AF3817B05BFF00EA1473 /* WordData.m in Sources */,
 				5AF1E48617B4560500438A81 /* HintLayer.m in Sources */,
+				5AED2F3C17BAC57C005DF4DF /* Tutorial.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

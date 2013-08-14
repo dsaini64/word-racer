@@ -70,17 +70,17 @@
 
         
         
-        NSArray *wordArray = [WordData sharedData].arrayOfDataToBeStored;
-        NSLog(@"%@",wordArray);
+        self.wordArray = [WordData sharedData].arrayOfDataToBeStored;
+        NSLog(@"%@",self.wordArray);
         
-        if (wordArray.count > 8) {
+        if (self.wordArray.count > 8) {
             [self showDownBtn];
         }
         
         float y = 0;
-       for(int i = 0; i < [wordArray count]; i++) {
+       for(int i = 0; i < [self.wordArray count]; i++) {
            
-        NSDictionary *wordDict = [wordArray objectAtIndex:i];
+        NSDictionary *wordDict = [self.wordArray objectAtIndex:i];
         CCLabelTTF *POSLabel = [CCLabelTTF labelWithString:[NSString stringWithFormat:@"%@",[wordDict objectForKey:@"POS"]] dimensions: CGSizeMake(200,200) alignment:kCCTextAlignmentLeft fontName:@"arial" fontSize:20];
            POSLabel.position = CGPointMake (160 , (100 - y));
             [self addChild:POSLabel];
@@ -192,6 +192,18 @@
         item.position = ccp(100,-20-(480*[self.timesDownPressed intValue]));
         CCMenu *menu = [CCMenu menuWithItems:item, nil];
         [self addChild:menu];
+    }
+    
+    if([self.timesDownPressed intValue] == 1) {
+        
+        self.wordCount = self.wordArray.count - 8;
+        
+        self.downLabel = [CCLabelTTF labelWithString: @"down" fontName:@"arial" fontSize:10.0f];
+        CCMenuItemLabel *item = [CCMenuItemLabel itemWithLabel:self.downLabel target:self selector:@selector(moveScreenDown)];
+        item.position = ccp(100,-20-(480*[self.timesDownPressed intValue]));
+        CCMenu *menu = [CCMenu menuWithItems:item, nil];
+        [self addChild:menu];
+        
     }
     
         

@@ -10,6 +10,7 @@
 #import "GameLayer.h"
 #import "textFieldTestAppDelegate.h"
 #import "cocos2d.h"
+#import "Tutorial.h"
 
 
 @implementation GenericMenuLayer
@@ -17,9 +18,32 @@
 -(id) init
 {
 	if ((self = [super init]))
-	{        
+	{
+        
+        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+        BOOL returningPlayer = [defaults integerForKey:@"returningPlayer"];
+     
+        if (!returningPlayer) {
+            
+            CCLabelTTF *label = [CCLabelTTF labelWithString: @"Start Game!" fontName:@"Arial" fontSize:40.0f];
+            
+            
+            
+            CCMenuItemLabel *item = [CCMenuItemLabel itemWithLabel:label target:self selector:@selector(goToTutorial)];
+            
+            
+            CCMenu *menu = [CCMenu menuWithItems:item, nil];
+            
+            [self addChild:menu];
+            
+            
+        }
+        
+        else {
+ 
         CCLabelTTF *label = [CCLabelTTF labelWithString: @"Start Game!" fontName:@"Arial" fontSize:40.0f];
 
+        
         
         CCMenuItemLabel *item = [CCMenuItemLabel itemWithLabel:label target:self selector:@selector(doSomething)];
 
@@ -27,10 +51,12 @@
         CCMenu *menu = [CCMenu menuWithItems:item, nil];
         
         [self addChild:menu];
+
         }
-        
+
+    
          
-        
+    }
         //Add button
         /*
         UIButton *button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
@@ -53,6 +79,12 @@
 -(void) doSomething
 {
         [[CCDirector sharedDirector] replaceScene: [[GameLayer alloc] init]];
+        
+}
+
+-(void)goToTutorial {
+    
+        [[CCDirector sharedDirector] replaceScene: [[Tutorial alloc] init]];
 }
 
 

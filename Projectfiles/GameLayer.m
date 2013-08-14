@@ -64,6 +64,8 @@ CCLabelTTF* verifyTouchEnd;
 {
 	if ((self = [super init]))
 	{
+        
+
         //this line initializes the instanceOfGameLayer variable such that it can be accessed by the sharedGameLayer method
 		instanceOfGameLayer = self;
     
@@ -76,7 +78,7 @@ CCLabelTTF* verifyTouchEnd;
         self.textBox = [[UITextField alloc] initWithFrame:CGRectMake(100, 100, 220, 20)];
         [self.textBox setTextColor: [UIColor colorWithRed:255 green:0 blue:0 alpha:1.0]];
         [self.textBox setBackgroundColor:[UIColor colorWithRed:255 green:100 blue:43 alpha:1.0]];
-        //self.textBox.autocorrectionType = UITextAutocorrectionTypeNo;
+        self.textBox.autocorrectionType = UITextAutocorrectionTypeNo;
         self.textBox.autocapitalizationType = UITextAutocapitalizationTypeNone;
         [myView addSubview:self.textBox];
         [self.textBox becomeFirstResponder];
@@ -142,17 +144,7 @@ CCLabelTTF* verifyTouchEnd;
         
         //This will schedule a call to the update method every frame
         [self scheduleUpdate];
-//       NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-//        BOOL returningPlayer = [defaults integerForKey:@"returningPlayer"];
-//        returningPlayer = nil; 
-//        if(returningPlayer == nil){
-//            
-//            self.startTextLabel = [CCLabelTTF labelWithString:@"Welcome to my game!!" dimensions: CGSizeMake(200,200) alignment:kCCTextAlignmentLeft fontName:@"arial" fontSize:100];
-//            
-//            self.startTextLabel.position = ccp(110, 350);
-//            [self addChild: self.startTextLabel];
-//            
-//        }
+
     }
     
         
@@ -253,8 +245,8 @@ CCLabelTTF* verifyTouchEnd;
 
 -(void)drawScore {
     
-    self.scoreInfoLabel.removeFromParent;
-    self.scoreLabel.removeFromParent;
+    [self.scoreInfoLabel removeFromParent];
+    [self.scoreLabel removeFromParent];
     self.scoreLabel = [CCLabelTTF labelWithString:[NSString stringWithFormat:@"%d", self.score] dimensions: CGSizeMake(200,200) alignment:kCCTextAlignmentRight fontName:@"arial" fontSize:50];
     self.scoreLabel.position = ccp(210, 375);
     
@@ -434,8 +426,6 @@ CCLabelTTF* verifyTouchEnd;
     
     [self.textBox removeFromSuperview];
     [[CCDirector sharedDirector] replaceScene: [HintLayer alloc]];
-   
-             
 }
 
 
