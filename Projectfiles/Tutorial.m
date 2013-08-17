@@ -210,7 +210,7 @@
       [CCFadeIn actionWithDuration:0.7],
       [CCDelayTime actionWithDuration:4],
       [CCFadeOut actionWithDuration:0.2],
-      [CCCallFunc actionWithTarget:self selector:@selector(introduceQMark)],
+      [CCCallFunc actionWithTarget:self selector:@selector(startGame)],
       nil
       ]
      ];

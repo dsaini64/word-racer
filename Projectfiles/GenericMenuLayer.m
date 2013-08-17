@@ -38,7 +38,8 @@
             
             [self addChild:menu];
             
-           // [defaults setBool:YES forKey:@"returningPlayer"];
+            
+           [defaults setBool:YES forKey:@"returningPlayer"];
             
             
         }
