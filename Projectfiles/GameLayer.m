@@ -85,11 +85,11 @@ CCLabelTTF* verifyTouchEnd;
         [self.textBox setDelegate:self];
         
         //Add skip button
-        CCLabelTTF *skipLabel = [CCLabelTTF labelWithString: @"Skip" fontName:@"Arial" fontSize:20.0f];
-        CCMenuItemLabel *item = [CCMenuItemLabel itemWithLabel:skipLabel target:self selector:@selector(skipWord)];
-        item.position = ccp(125,100);
-        CCMenu *menu = [CCMenu menuWithItems:item, nil];
-        [self addChild:menu]; 
+//        CCLabelTTF *skipLabel = [CCLabelTTF labelWithString: @"Skip" fontName:@"Arial" fontSize:20.0f];
+//        CCMenuItemLabel *item = [CCMenuItemLabel itemWithLabel:skipLabel target:self selector:@selector(skipWord)];
+//        item.position = ccp(125,100);
+//        CCMenu *menu = [CCMenu menuWithItems:item, nil];
+//        [self addChild:menu]; 
         
         //Add question button
         CCLabelTTF *questionLabel = [CCLabelTTF labelWithString: @"?" fontName:@"Arial" fontSize:20.0f];
@@ -222,7 +222,7 @@ CCLabelTTF* verifyTouchEnd;
     if ([self checkWord:textField]) {
         self.score ++;
         self.wordValid = @"YES";
-        [self storePOS:self.partOfSpeech andStartingLetter:self.startText andUserInput:self.completeInput andValidity:self.wordValid];
+        [self storePOS:self.partOfSpeech andStartingLetter:self.startText andUserInput:self.userInput andValidity:self.wordValid];
         [self updateLetterAndPOS];
         [self displayLetterAndPOS];
         [self drawScore];
@@ -232,7 +232,7 @@ CCLabelTTF* verifyTouchEnd;
     // Maybe give user feedback like "Good job!"
     } else {
         self.wordValid = @"NO";
-        [self storePOS:self.partOfSpeech andStartingLetter:self.startText andUserInput:self.completeInput andValidity:self.wordValid];
+        [self storePOS:self.partOfSpeech andStartingLetter:self.startText andUserInput:self.userInput andValidity:self.wordValid];
         [self updateLetterAndPOS];
         [self displayLetterAndPOS];
         [self drawScore];
@@ -259,19 +259,12 @@ CCLabelTTF* verifyTouchEnd;
     
     self.guesses++;
     self.userInput = textField.text;
-    self.completeInput = [NSString stringWithFormat:@"%@%@", self.startText, self.userInput];
     Lexicontext *dictionary = [Lexicontext sharedDictionary];
-    NSDictionary *synomnyms = [dictionary thesaurusFor:self.completeInput];
-    if ([synomnyms objectForKey:self.partOfSpeech] && ![self.userInput isEqual: @""]){
+    NSDictionary *synomnyms = [dictionary thesaurusFor:self.userInput];
+    if ([synomnyms objectForKey:self.partOfSpeech]){
         NSLog(@"Good Job!");
         return true;
     }
-        else if (([self.startTextLabel isEqual: @"I"] || [self.startTextLabel isEqual: @"A"]) && [self.POSLabel isEqual: @"Noun"] && [self.userInput isEqual: @""] )
-        {
-            NSLog(@"Good Job!");
-            return true; 
-        }
-    
      else {
         NSLog(@"What you entered does NOT work");
         return false;
@@ -330,7 +323,7 @@ CCLabelTTF* verifyTouchEnd;
 - (void)viewDidLoad
 {
     currMinute=0;
-    currSeconds=90;
+    currSeconds=15;
 
     self.timeLabel = [CCLabelTTF labelWithString:[NSString stringWithFormat:@"%d:%02d", currMinute, currSeconds] dimensions: CGSizeMake(200,200) alignment:kCCTextAlignmentLeft fontName:@"arial" fontSize:15];
      self.timeLabel.position = ccp(100, 375);
@@ -398,12 +391,7 @@ CCLabelTTF* verifyTouchEnd;
 }
 
 -(void) storePOS:(NSString *)POS andStartingLetter:(NSString *)startingLetter andUserInput:(NSString *)userInput andValidity:(NSString *)wordValid {
-    
-    if (userInput.length == 1)
-    {
-        userInput = @"";
-    }
-    
+ 
 
     NSMutableDictionary *mutableDict = [NSMutableDictionary new];
     

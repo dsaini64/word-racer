@@ -118,18 +118,13 @@
 -(BOOL) checkWord: (UITextField *)textField {
     
     self.userInput = textField.text;
-    self.completeInput = [NSString stringWithFormat:@"%@%@", self.startText, self.userInput];
     Lexicontext *dictionary = [Lexicontext sharedDictionary];
-    NSDictionary *synomnyms = [dictionary thesaurusFor:self.completeInput];
-    if ([synomnyms objectForKey:self.partOfSpeech] && ![self.userInput isEqual: @""]){
+    NSDictionary *synomnyms = [dictionary thesaurusFor:self.userInput];
+    if ([synomnyms objectForKey:self.partOfSpeech]){
         NSLog(@"Good Job!");
         return true;
     }
-    else if (([self.startTextLabel isEqual: @"I"] || [self.startTextLabel isEqual: @"A"]) && [self.POSLabel isEqual: @"Noun"] && [self.userInput isEqual: @""] )
-    {
-        NSLog(@"Good Job!");
-        return true;
-    }
+
     
     else {
         NSLog(@"What you entered does NOT work");
