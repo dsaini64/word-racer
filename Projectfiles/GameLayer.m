@@ -323,7 +323,7 @@ CCLabelTTF* verifyTouchEnd;
 - (void)viewDidLoad
 {
     currMinute=0;
-    currSeconds=15;
+    currSeconds=90;
 
     self.timeLabel = [CCLabelTTF labelWithString:[NSString stringWithFormat:@"%d:%02d", currMinute, currSeconds] dimensions: CGSizeMake(200,200) alignment:kCCTextAlignmentLeft fontName:@"arial" fontSize:15];
      self.timeLabel.position = ccp(100, 375);
