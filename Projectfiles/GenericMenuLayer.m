@@ -22,7 +22,7 @@
         
         NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
         BOOL returningPlayer = [defaults integerForKey:@"returningPlayer"];
-        returningPlayer = nil;
+        //returningPlayer = nil;
         
      
         if (!returningPlayer) {

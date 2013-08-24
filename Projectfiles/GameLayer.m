@@ -262,9 +262,23 @@ CCLabelTTF* verifyTouchEnd;
     Lexicontext *dictionary = [Lexicontext sharedDictionary];
     NSDictionary *synomnyms = [dictionary thesaurusFor:self.userInput];
     if ([synomnyms objectForKey:self.partOfSpeech]){
+        NSLog(@"%c",[self.userInput characterAtIndex:0]);
+        NSLog(@"%c",[self.startText characterAtIndex:0]);
+        self.userInput = [self.userInput capitalizedString];
+
+        if ([self.userInput characterAtIndex:0] == [self.startText characterAtIndex:0]) {
+            
         NSLog(@"Good Job!");
         return true;
     }
+        else {
+        NSLog(@"What you entered does NOT work");
+        return false;
+        }
+    }
+    
+
+    
      else {
         NSLog(@"What you entered does NOT work");
         return false;
