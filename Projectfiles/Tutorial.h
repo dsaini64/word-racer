@@ -2,7 +2,7 @@
 //  Tutorial.h
 //  PortraitTemplate
 //
-//  Created by Divya on 8/13/13.
+//  Created by Divakar on 8/13/13.
 //
 //
 

@@ -2,7 +2,7 @@
 //  WordData.m
 //  PortraitTemplate
 //
-//  Created by Divya on 8/5/13.
+//  Created by Divakar on 8/5/13.
 //
 //
 

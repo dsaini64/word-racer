@@ -2,7 +2,7 @@
 //  GameOverLayer.m
 //  PortraitTemplate
 //
-//  Created by Divya on 7/26/13.
+//  Created by Divakar on 7/26/13.
 //
 //
 
