@@ -64,7 +64,8 @@ CCLabelTTF* verifyTouchEnd;
 {
 	if ((self = [super init]))
 	{
-        
+        //sets up winSize so I can make object iPhone 5 compatible, needs to be in every method
+        CGSize winSize = [CCDirector sharedDirector].winSize; 
 
         //this line initializes the instanceOfGameLayer variable such that it can be accessed by the sharedGameLayer method
 		instanceOfGameLayer = self;
@@ -94,7 +95,7 @@ CCLabelTTF* verifyTouchEnd;
         //Add question button
         CCLabelTTF *questionLabel = [CCLabelTTF labelWithString: @"?" fontName:@"Arial" fontSize:20.0f];
         CCMenuItemLabel *item2 = [CCMenuItemLabel itemWithLabel:questionLabel target:self selector:@selector(showHints)];
-        item2.position = ccp(50,100);
+        item2.position = ccp(.10416 * winSize.width,100);
         CCMenu *menu2 = [CCMenu menuWithItems:item2, nil];
         
         
@@ -104,12 +105,12 @@ CCLabelTTF* verifyTouchEnd;
         
         self.startTextLabel = [CCLabelTTF labelWithString:[NSString stringWithFormat:@"%@", self.startText] dimensions: CGSizeMake(200,200) alignment:kCCTextAlignmentLeft fontName:@"arial" fontSize:100];
         
-        self.startTextLabel.position = ccp(110, 350);
+        self.startTextLabel.position = ccp(.229 * winSize.width, 350);
         [self addChild: self.startTextLabel];
         
         self.POSLabel = [CCLabelTTF labelWithString:[NSString stringWithFormat:@"%@", self.partOfSpeech] dimensions: CGSizeMake(200,200) alignment:kCCTextAlignmentLeft fontName:@"arial" fontSize:20];
         
-        self.POSLabel.position = ccp(205, 320);
+        self.POSLabel.position = ccp(.4271*winSize.width, 320);
         [self addChild: self.POSLabel];
         [self viewDidLoad];
         [self start];
@@ -245,10 +246,13 @@ CCLabelTTF* verifyTouchEnd;
 
 -(void)drawScore {
     
+    //sets up winSize so I can make object iPhone 5 compatible, needs to be in every method
+    CGSize winSize = [CCDirector sharedDirector].winSize;
+    
     [self.scoreInfoLabel removeFromParent];
     [self.scoreLabel removeFromParent];
     self.scoreLabel = [CCLabelTTF labelWithString:[NSString stringWithFormat:@"%d", self.score] dimensions: CGSizeMake(200,200) alignment:kCCTextAlignmentRight fontName:@"arial" fontSize:50];
-    self.scoreLabel.position = ccp(210, 375);
+    self.scoreLabel.position = ccp(.4375 * winSize.width , 375);
     
     [self addChild:self.scoreLabel];
 
@@ -286,10 +290,13 @@ CCLabelTTF* verifyTouchEnd;
 }
 
 -(void) drawGoodJob {
+    //sets up winSize so I can make object iPhone 5 compatible, needs to be in every method
+    CGSize winSize = [CCDirector sharedDirector].winSize;
+    
     [self.goodJobLabel removeFromParent];
     [self.incorrectLabel removeFromParent];
     self.goodJobLabel =  [CCLabelTTF labelWithString:[NSString stringWithFormat:@"Good Job!"]  fontName:@"arial" fontSize:50];
-    self.goodJobLabel.position = ccp(160, 250);
+    self.goodJobLabel.position = ccp(.3333 * winSize.width, 250);
     [self addChild:self.goodJobLabel];
     [self.goodJobLabel runAction:
       [CCSequence actions:
@@ -308,10 +315,15 @@ CCLabelTTF* verifyTouchEnd;
 }
 
 - (void) drawIncorrect {
+    
+    //sets up winSize so I can make object iPhone 5 compatible, needs to be in every method
+    CGSize winSize = [CCDirector sharedDirector].winSize;
+    
+    
     [self.goodJobLabel removeFromParent];
     [self.incorrectLabel removeFromParent];
     self.incorrectLabel = [CCLabelTTF labelWithString:[NSString stringWithFormat:@"Wrong!"] fontName:@"arial" fontSize:50];
-    self.incorrectLabel.position = ccp(160,250);
+    self.incorrectLabel.position = ccp(.3333 * winSize.width, 250);
     [self addChild:self.incorrectLabel];
     [self.incorrectLabel runAction:
      [CCSequence actions:
@@ -336,11 +348,16 @@ CCLabelTTF* verifyTouchEnd;
 
 - (void)viewDidLoad
 {
+    
+    //sets up winSize so I can make object iPhone 5 compatible, needs to be in every method
+    CGSize winSize = [CCDirector sharedDirector].winSize;
+    
+    
     currMinute=0;
     currSeconds=90;
 
     self.timeLabel = [CCLabelTTF labelWithString:[NSString stringWithFormat:@"%d:%02d", currMinute, currSeconds] dimensions: CGSizeMake(200,200) alignment:kCCTextAlignmentLeft fontName:@"arial" fontSize:15];
-     self.timeLabel.position = ccp(100, 375);
+     self.timeLabel.position = ccp(.0283 * winSize.width, 375);
     [self addChild:self.timeLabel];
     self.arrayOfWords = [[NSMutableArray alloc]init];
     self.POSArray = [[NSMutableArray alloc]init]; 

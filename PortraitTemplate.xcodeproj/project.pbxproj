@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		5A046BF517A3603200074835 /* GameOverLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A046BF417A3603200074835 /* GameOverLayer.m */; };
+		5A643237199C2C62006CD160 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5A643236199C2C62006CD160 /* Default-568h@2x.png */; };
 		5A7C4C951784E9C70084DDC9 /* textFieldTestAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A7C4C941784E9C70084DDC9 /* textFieldTestAppDelegate.m */; };
 		5ACE8CC117B0676200335B2B /* LexicontextAssets.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 5ACE8CBF17B0676200335B2B /* LexicontextAssets.bundle */; };
 		5ACE8CC217B0676200335B2B /* libLexicontext.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5ACE8CC017B0676200335B2B /* libLexicontext.a */; };
@@ -46,6 +47,7 @@
 /* Begin PBXFileReference section */
 		5A046BF317A3603200074835 /* GameOverLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameOverLayer.h; sourceTree = "<group>"; };
 		5A046BF417A3603200074835 /* GameOverLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameOverLayer.m; sourceTree = "<group>"; };
+		5A643236199C2C62006CD160 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		5A7C4C931784E9C70084DDC9 /* textFieldTestAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = textFieldTestAppDelegate.h; sourceTree = "<group>"; };
 		5A7C4C941784E9C70084DDC9 /* textFieldTestAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = textFieldTestAppDelegate.m; sourceTree = "<group>"; };
 		5ACE8CBF17B0676200335B2B /* LexicontextAssets.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = LexicontextAssets.bundle; sourceTree = "<group>"; };
@@ -156,6 +158,7 @@
 		DCC1A0D613A94EC0005BD75D = {
 			isa = PBXGroup;
 			children = (
+				5A643236199C2C62006CD160 /* Default-568h@2x.png */,
 				DCC1A38C13A94F1A005BD75D /* Projectfiles */,
 				DCC1A0F713A94ED5005BD75D /* Projectfiles-iOS */,
 				DCFA90ED13B4F6A0009DD35A /* BuildSettings */,
@@ -316,6 +319,7 @@
 				AA6049B015AE500B0043DFF9 /* ship.png in Resources */,
 				AA6049B215AE50130043DFF9 /* ship-hd.png in Resources */,
 				5ACE8CC117B0676200335B2B /* LexicontextAssets.bundle in Resources */,
+				5A643237199C2C62006CD160 /* Default-568h@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

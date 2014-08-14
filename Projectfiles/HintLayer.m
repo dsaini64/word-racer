@@ -2,7 +2,7 @@
 //  HintLayer.m
 //  PortraitTemplate
 //
-//  Created by Divya on 8/8/13.
+//  Created by Divakar on 8/8/13.
 //
 //
 
@@ -14,6 +14,7 @@
 {
 	if ((self = [super init]))
 	{
+        
         
     }
 }
