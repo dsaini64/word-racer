@@ -105,7 +105,7 @@ CCLabelTTF* verifyTouchEnd;
         
         self.startTextLabel = [CCLabelTTF labelWithString:[NSString stringWithFormat:@"%@", self.startText] dimensions: CGSizeMake(200,200) alignment:kCCTextAlignmentLeft fontName:@"arial" fontSize:100];
         
-        self.startTextLabel.position = ccp(.229 * winSize.width, 350);
+        self.startTextLabel.position = ccp(.4 * winSize.width, 350);
         [self addChild: self.startTextLabel];
         
         self.POSLabel = [CCLabelTTF labelWithString:[NSString stringWithFormat:@"%@", self.partOfSpeech] dimensions: CGSizeMake(200,200) alignment:kCCTextAlignmentLeft fontName:@"arial" fontSize:20];
